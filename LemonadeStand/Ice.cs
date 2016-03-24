@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    class Ice : Inventory
+    class Ice : items
     {
+        public Ice(double IngredientCost, int Quantity)
+        {
+            ingredientCost = IngredientCost;
+            quantity = Quantity;
+        }
     }
 }

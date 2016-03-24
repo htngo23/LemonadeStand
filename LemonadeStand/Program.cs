@@ -10,6 +10,14 @@ namespace LemonadeStand
     {
         static void Main(string[] args)
         {
+            Inventory stock = new Inventory();
+
+            //stock.buyPaperCups();
+            stock.buyPaperCups();
+            
+            //stock.buyLemon();
+            
+
         }
     }
 }

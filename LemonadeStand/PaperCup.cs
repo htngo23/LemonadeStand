@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    class PaperCup:Inventory
+    class PaperCup:items
     {
+        public PaperCup(double IngredientCost, int Quantity)
+        {
+            ingredientCost = IngredientCost;
+            quantity = Quantity;
+        }
+      
     }
 }
