@@ -14,23 +14,27 @@ namespace LemonadeStand
         Ice ice = new Ice(.25, 0);
         Sugar sugar = new Sugar(1, 0);
         Lemons lemon = new Lemons(1.5, 0);
-        PaperCup paperCups = new PaperCup(.50, 0);
+        PaperCup paperCups = new PaperCup(.05, 0);
         theDrink lemonade = new theDrink(0, 0, 0, 0, 0, 0);
         Player gucci = new Player(20.50, "Gucci Mane");
 
 
 
 
-        public void setPrice()
+        public double setPrice()
         {
             Console.WriteLine("Set the price for a cup of lemonade");
-            int PriceDrink = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine(" The price of lemonade per cup is:  $" + PriceDrink);
+            lemonade.priceDrink = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(" The price of lemonade per cup is:  $" + lemonade.priceDrink);
+            return lemonade.priceDrink;
         }
+
+
         //public void makeDrink()
         //{             HERE YOU WILL COMBIME ALL OF THE "USE" fuctions in order to make 1 lemonade drink
         //    Console.WriteLine(");
         //}
+
         public void buyPaperCups()
         {
             Console.WriteLine("How many paper cups would you like to buy?");
@@ -47,7 +51,10 @@ namespace LemonadeStand
             Console.WriteLine("How many ice would you like to buy?");
             int amountIce = Convert.ToInt32(Console.ReadLine());
             ice.quantity += amountIce;
+            double iceTotalCost = amountIce * ice.ingredientCost;
+            gucci.money -= iceTotalCost;
             Console.WriteLine("You now have: " + ice.quantity + " ice total");
+            Console.WriteLine("You have $" + gucci.money + " remaining");
             return ice.quantity;
         }
 
@@ -73,7 +80,10 @@ namespace LemonadeStand
             Console.WriteLine("How many sugar would you like to buy?");
             int amountSugar = Convert.ToInt32(Console.ReadLine());
             sugar.quantity += amountSugar;
+            double sugarTotalCost = amountSugar * sugar.ingredientCost;
+            gucci.money -= sugarTotalCost;
             Console.WriteLine("You now have: " + sugar.quantity + " sugar total");
+            Console.WriteLine("You have $" + gucci.money + " remaining");
         }
 
         public int useSugar()
@@ -99,7 +109,10 @@ namespace LemonadeStand
             Console.WriteLine("How many lemons would you like to buy?");
             int amountLemon = Convert.ToInt32(Console.ReadLine());
             lemon.quantity += amountLemon;
+            double lemonTotalCost = amountLemon * lemon.ingredientCost;
+            gucci.money -= lemonTotalCost;
             Console.WriteLine("You now have: " + lemon.quantity + " lemon total");
+            Console.WriteLine("You have $" + gucci.money + " remaining");
         }
         public int useLemon()
         {

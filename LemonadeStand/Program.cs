@@ -11,10 +11,12 @@ namespace LemonadeStand
         static void Main(string[] args)
         {
             Inventory stock = new Inventory();
+            WeatherWork forecast = new WeatherWork();
 
-            //stock.buyPaperCups();
-            stock.buyPaperCups();
+            forecast.weatherNewDay();
             
+
+            Console.ReadLine();
             //stock.buyLemon();
             
 
