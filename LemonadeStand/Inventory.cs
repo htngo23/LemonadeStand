@@ -15,8 +15,8 @@ namespace LemonadeStand
         Sugar sugar = new Sugar(1, 0);
         Lemons lemon = new Lemons(1.5, 0);
         PaperCup paperCups = new PaperCup(.05, 0);
-        theDrink lemonade = new theDrink(0, 0, 0, 0, 0, 0);
-        Player gucci = new Player(20.50, "Gucci Mane");
+        public theDrink lemonade = new theDrink(0, 0, 0, 0, 0, 0);
+        Player gucci = new Player(20, "Gucci Mane");
 
 
 
@@ -24,11 +24,20 @@ namespace LemonadeStand
         public double setPrice()
         {
             Console.WriteLine("Set the price for a cup of lemonade");
-            lemonade.priceDrink = Convert.ToInt32(Console.ReadLine());
+            lemonade.priceDrink = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine(" The price of lemonade per cup is:  $" + lemonade.priceDrink);
             return lemonade.priceDrink;
         }
-
+        public double purchaseMade()
+        {
+            Console.WriteLine("You have made a sale!");
+            gucci.money += lemonade.priceDrink;
+            return gucci.money;  
+        }
+        public void printTotal()
+        {
+            Console.WriteLine("The total of today are : $" + gucci.money);
+        }
 
         //public void makeDrink()
         //{             HERE YOU WILL COMBIME ALL OF THE "USE" fuctions in order to make 1 lemonade drink

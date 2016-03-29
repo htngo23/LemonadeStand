@@ -8,14 +8,14 @@ namespace LemonadeStand
 {
     class Weather
     {
-       public int weather;      //any weather will buy
-        public int weather2;    //won't go in the rain
-        public int weather3;    //won't go in war
+       public int weatherToday;      //any weather will buy
+        //public int weather2;    //won't go in the rain
+        //public int weather3;    //won't go in war
  
 
-        public Weather(int Weather)
+        public Weather(int WeatherToday)
         {
-            weather = Weather;
+            weatherToday = WeatherToday;
         }
 
     

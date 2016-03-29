@@ -12,8 +12,15 @@ namespace LemonadeStand
         {
             Inventory stock = new Inventory();
             WeatherWork forecast = new WeatherWork();
+            Customer patron = new Customer(stock);
+            Gameplay gameplay = new Gameplay();
 
-            forecast.weatherNewDay();
+            //stock.setPrice();
+            //forecast.weatherNewDay();
+            //patron.passOrBuy(stock.lemonade, forecast.weather1);
+
+            gameplay.test();
+
             
 
             Console.ReadLine();

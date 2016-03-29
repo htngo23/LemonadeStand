@@ -10,21 +10,21 @@ namespace LemonadeStand
     {
         Random random = new Random();
 
-        Weather weather1 = new Weather(0);
+        public Weather weather1 = new Weather(0);
 
         public int weatherNewDay()
         {
-            weather1.weather = random.Next(0, 2);
+            weather1.weatherToday = random.Next(0, 2);
 
-            if (weather1.weather == 0)
+            if (weather1.weatherToday == 0)
             {
                 Console.WriteLine("Today will be sunny... sell away!");
             }
-            if (weather1.weather == 1)
+            if (weather1.weatherToday == 1)
             {
                 Console.WriteLine("Today will be rainy.  Perhaps business will be rough today..");
             }
-            return weather1.weather;
+            return weather1.weatherToday;
 
         }
 
