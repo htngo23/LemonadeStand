@@ -71,7 +71,7 @@ namespace LemonadeStand
                     Console.WriteLine("No purchase by this customer...");
                 }
             }
-            stock.printTotal();
+            
         }
 
     }

@@ -11,12 +11,12 @@ namespace LemonadeStand
 
       
 
-        Ice ice = new Ice(.25, 0);
-        Sugar sugar = new Sugar(1, 0);
-        Lemons lemon = new Lemons(1.5, 0);
-        PaperCup paperCups = new PaperCup(.05, 0);
-        public theDrink lemonade = new theDrink(0, 0, 0, 0, 0, 0);
-        Player gucci = new Player(20, "Gucci Mane");
+        Ice ice = new Ice(.05, 0);
+        Sugar sugar = new Sugar(.2, 0);
+        Lemons lemon = new Lemons(.55, 0);
+        PaperCup paperCups = new PaperCup(.10, 0);
+        public theDrink lemonade = new theDrink(0, 0, 0, 0, 0, 1);
+        Player gucci = new Player(200, "Gucci Mane");
 
 
 
@@ -28,42 +28,139 @@ namespace LemonadeStand
             Console.WriteLine(" The price of lemonade per cup is:  $" + lemonade.priceDrink);
             return lemonade.priceDrink;
         }
+        public void subtractItems()
+        {
+            paperCups.quantity -= lemonade.cups;
+            lemon.quantity -= lemonade.lemons;
+            ice.quantity -= lemonade.ice;
+            sugar.quantity -= lemonade.sugar;
+        }
         public double purchaseMade()
         {
-            Console.WriteLine("You have made a sale!");
-            gucci.money += lemonade.priceDrink;
-            return gucci.money;  
-        }
-        public void printTotal()
-        {
-            Console.WriteLine("The total of today are : $" + gucci.money);
+            if ((paperCups.quantity >= lemonade.cups) && (lemon.quantity >= lemonade.lemons) && (ice.quantity >= lemonade.ice) && (sugar.quantity >= lemonade.sugar))
+            {
+                Console.WriteLine("You have made a sale!");
+                gucci.money += lemonade.priceDrink;
+                subtractItems();
+            }
+            else
+            {
+                Console.WriteLine("Not enough sufficient supplies");
+            }
+            return gucci.money;
         }
 
-        //public void makeDrink()
-        //{             HERE YOU WILL COMBIME ALL OF THE "USE" fuctions in order to make 1 lemonade drink
-        //    Console.WriteLine(");
-        //}
+        public void printTotal1()
+        {
+            Console.WriteLine("The total of Day 1 are : $" + gucci.money);
+        }
+        public void printTotal2()
+        {
+            Console.WriteLine("The total of Day 2 are : $" + gucci.money);
+        }
+        public void printTotal3()
+        {
+            Console.WriteLine("The total of Day 3 are : $" + gucci.money);
+        }
+        public void printTotal4()
+        {
+            Console.WriteLine("The total of Day 4 are : $" + gucci.money);
+        }
+        public void printTotal5()
+        {
+            Console.WriteLine("The total of Day 5 are : $" + gucci.money);
+        }
+        public void printTotal6()
+        {
+            Console.WriteLine("The total of Day 6 are : $" + gucci.money);
+        }
+        public void printTotal7()
+        {
+            Console.WriteLine("The total of Day 7 are : $" + gucci.money);
+        }
+
+        public int purchaseGoods()
+        {
+            
+            bool exit = false;
+            while (!exit)
+            {
+                Console.WriteLine("You have $" + gucci.money);
+
+                Console.WriteLine("Press (1) to buy Paper Cups at 10 cents/cup");
+                Console.WriteLine("Current have: " + paperCups.quantity + "cups");
+                Console.WriteLine("Press (2) to buy Lemons at 55 cents/lemon");
+                Console.WriteLine("Current have: " + lemon.quantity + "lemons");
+                Console.WriteLine("Press (3) to buy Ice at 5 cents/ice cube");
+                Console.WriteLine("Current have: " + ice.quantity + "ice");
+                Console.WriteLine("Press (4) to buy Sugar 20 cents/sugar unit");
+                Console.WriteLine("Current have: " + sugar.quantity + "sugar");
+                Console.WriteLine("Press (5) to exit");
+                string inputs = Console.ReadLine();
+                switch (inputs)
+                {
+                    case "1":
+                        buyPaperCups();
+                        break;
+                    case "2":
+                        buyLemon();
+                        useLemon();
+                        break;
+                    case "3":
+                        buyIce();
+                        useIce();
+                        break;
+                    case "4":
+                        buySugar();
+                        useSugar();
+                        break;
+                    case "5":
+                        exit = true;
+                        break;
+                    default:
+                        return purchaseGoods();
+                        
+                }
+            }
+            return 0;
+        }
+
+      
 
         public void buyPaperCups()
         {
             Console.WriteLine("How many paper cups would you like to buy?");
             int amountCups = Convert.ToInt32(Console.ReadLine());
-            paperCups.quantity += amountCups;
             double cupsTotalCost = amountCups * paperCups.ingredientCost;
-            gucci.money -= cupsTotalCost;
-            Console.WriteLine("You now have: " + paperCups.quantity + " papercups total");
-            Console.WriteLine("You have $" + gucci.money + " remaining");
+            if (gucci.money > cupsTotalCost)
+            {
+                paperCups.quantity += amountCups;
+                gucci.money -= cupsTotalCost;
+                Console.WriteLine("You now have: " + paperCups.quantity + " papercups total");
+                Console.WriteLine("You have $" + gucci.money + " remaining");
+            }
+            else
+            {
+                Console.WriteLine("Not enough money to buy cups...");
+            }
         }
 
         public int buyIce()
         {
             Console.WriteLine("How many ice would you like to buy?");
             int amountIce = Convert.ToInt32(Console.ReadLine());
-            ice.quantity += amountIce;
             double iceTotalCost = amountIce * ice.ingredientCost;
-            gucci.money -= iceTotalCost;
-            Console.WriteLine("You now have: " + ice.quantity + " ice total");
-            Console.WriteLine("You have $" + gucci.money + " remaining");
+            if (gucci.money > iceTotalCost)
+            {
+                ice.quantity += amountIce;
+                gucci.money -= iceTotalCost;
+                Console.WriteLine("You now have: " + ice.quantity + " ice total");
+                Console.WriteLine("You have $" + gucci.money + " remaining");
+            }
+            else
+            {
+                Console.WriteLine("Not enough money to buy ice...");
+            }
             return ice.quantity;
         }
 
@@ -73,9 +170,8 @@ namespace LemonadeStand
             int amountIce = Convert.ToInt32(Console.ReadLine());
             if(ice.quantity > 0)
             {
-                lemonade.ice += amountIce;
-                ice.quantity -= amountIce;
-                Console.WriteLine("You currently have " + ice.quantity + "remaining");
+                lemonade.ice += amountIce;  
+                Console.WriteLine("You will use " + lemonade.ice + " Ice/cup");
             }
             else if(ice.quantity <= 0)
             {
@@ -88,11 +184,18 @@ namespace LemonadeStand
         {
             Console.WriteLine("How many sugar would you like to buy?");
             int amountSugar = Convert.ToInt32(Console.ReadLine());
-            sugar.quantity += amountSugar;
             double sugarTotalCost = amountSugar * sugar.ingredientCost;
-            gucci.money -= sugarTotalCost;
-            Console.WriteLine("You now have: " + sugar.quantity + " sugar total");
-            Console.WriteLine("You have $" + gucci.money + " remaining");
+            if (gucci.money > sugarTotalCost)
+            {
+                sugar.quantity += amountSugar;
+                gucci.money -= sugarTotalCost;
+                Console.WriteLine("You now have: " + sugar.quantity + " sugar total");
+                Console.WriteLine("You have $" + gucci.money + " remaining");
+            }
+            else
+            {
+                Console.WriteLine("Not enough money to buy sugar");
+            }
         }
 
         public int useSugar()
@@ -101,9 +204,8 @@ namespace LemonadeStand
             int amountSugar = Convert.ToInt32(Console.ReadLine());
             if (sugar.quantity > 0)
             {
-                lemonade.ice += amountSugar;
-                ice.quantity -= amountSugar;
-                Console.WriteLine("You currently have " + sugar.quantity + "remaining");
+                lemonade.sugar += amountSugar;
+                Console.WriteLine("You will use " + lemonade.sugar + " sugar/cup");
             }
             else if (sugar.quantity <= 0)
             {
@@ -117,11 +219,18 @@ namespace LemonadeStand
         {
             Console.WriteLine("How many lemons would you like to buy?");
             int amountLemon = Convert.ToInt32(Console.ReadLine());
-            lemon.quantity += amountLemon;
             double lemonTotalCost = amountLemon * lemon.ingredientCost;
-            gucci.money -= lemonTotalCost;
-            Console.WriteLine("You now have: " + lemon.quantity + " lemon total");
-            Console.WriteLine("You have $" + gucci.money + " remaining");
+            if (gucci.money > lemonTotalCost)
+            {
+                lemon.quantity += amountLemon;
+                gucci.money -= lemonTotalCost;
+                Console.WriteLine("You now have: " + lemon.quantity + " lemon total");
+                Console.WriteLine("You have $" + gucci.money + " remaining");
+            }
+            else
+            {
+                Console.WriteLine("Not enough money to buy lemons....");
+            }
         }
         public int useLemon()
         {
@@ -130,8 +239,7 @@ namespace LemonadeStand
             if (lemon.quantity > 0)
             {
                 lemonade.lemons += amountLemon;
-                lemon.quantity -= amountLemon;
-                Console.WriteLine("You currently have " + lemon.quantity + "remaining");
+                Console.WriteLine("You will use " + lemonade.lemons + " lemons/cup");
             }
             else if (lemon.quantity <= 0)
             {

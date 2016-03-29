@@ -18,7 +18,7 @@ namespace LemonadeStand
             //stock.setPrice();
             //forecast.weatherNewDay();
             //patron.passOrBuy(stock.lemonade, forecast.weather1);
-
+            //stock.purchaseGoods();
             gameplay.test();
 
             
