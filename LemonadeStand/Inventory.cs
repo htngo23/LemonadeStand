@@ -11,10 +11,10 @@ namespace LemonadeStand
 
       
 
-        Ice ice = new Ice(.05, 0);
-        Sugar sugar = new Sugar(.2, 0);
-        Lemons lemon = new Lemons(.55, 0);
-        PaperCup paperCups = new PaperCup(.10, 0);
+        Ice ice = new Ice(.01, 0);
+        Sugar sugar = new Sugar(.05, 0);
+        Lemons lemon = new Lemons(.25, 0);
+        PaperCup paperCups = new PaperCup(.05, 0);
         public theDrink lemonade = new theDrink(0, 0, 0, 0, 0, 1, 0);
         Player gucci = new Player(200, "Gucci Mane");
 
@@ -92,42 +92,50 @@ namespace LemonadeStand
         public double printTotal1()
         {
             dailyTotal = lemonade.quantity * lemonade.priceDrink;
+            Console.WriteLine("You made " + lemonade.quantity + " sales today");
             Console.WriteLine("The total revenue of Day 1 is : $" + dailyTotal);
             return dailyTotal;
         }
+
         public double printTotal2()
         {
             dailyTotal2 = lemonade.quantity * lemonade.priceDrink;
+            Console.WriteLine("You made " + lemonade.quantity + " sales today");
             Console.WriteLine("The total revenue of Day 2 is : $" + dailyTotal2);
             return dailyTotal2;
         }
         public double printTotal3()
         {
             dailyTotal3 = lemonade.quantity * lemonade.priceDrink;
+            Console.WriteLine("You made " + lemonade.quantity + " sales today");
             Console.WriteLine("The total revenue of Day 3 is : $" + dailyTotal3);
             return dailyTotal3;
         }
         public double printTotal4()
         {
             dailyTotal4 = lemonade.quantity * lemonade.priceDrink;
+            Console.WriteLine("You made " + lemonade.quantity + " sales today");
             Console.WriteLine("The total revenue of Day 4 is : $" + dailyTotal4);
             return dailyTotal4;
         }
         public double printTotal5()
         {
             dailyTotal5 = lemonade.quantity * lemonade.priceDrink;
+            Console.WriteLine("You made " + lemonade.quantity + " sales today");
             Console.WriteLine("The total revenue of Day 5 is : $" + dailyTotal5);
             return dailyTotal5;
         }
         public double printTotal6()
         {
             dailyTotal6 = lemonade.quantity * lemonade.priceDrink;
+            Console.WriteLine("You made " + lemonade.quantity + " sales today");
             Console.WriteLine("The total revenue of Day 6 is : $" + dailyTotal6);
             return dailyTotal6;
         }
         public double printTotal7()
         {
             dailyTotal7 = lemonade.quantity * lemonade.priceDrink;
+            Console.WriteLine("You made " + lemonade.quantity + " sales today");
             Console.WriteLine("The total revenue of Day 7 is : $" + dailyTotal7);
             return dailyTotal7;
         }
@@ -138,6 +146,8 @@ namespace LemonadeStand
             Console.WriteLine("Fin");
         }
 
+   
+
         public int purchaseGoods()
         {
             
@@ -146,17 +156,17 @@ namespace LemonadeStand
             {
                 Console.WriteLine("You have $" + gucci.money);
 
-                Console.WriteLine("Press (1) to buy Paper Cups at 10 cents/cup");
-                Console.WriteLine("Current have: " + paperCups.quantity + "cups");
-                Console.WriteLine("Press (2) to buy Lemons at 55 cents/lemon");
-                Console.WriteLine("Current have: " + lemon.quantity + "lemons");
-                Console.WriteLine("Currently using " + lemonade.lemons +"Per cup");
-                Console.WriteLine("Press (3) to buy Ice at 5 cents/ice cube");
-                Console.WriteLine("Current have: " + ice.quantity + "ice");
-                Console.WriteLine("Currently using " + lemonade.ice + "Per cup");
-                Console.WriteLine("Press (4) to buy Sugar 20 cents/sugar unit");
-                Console.WriteLine("Current have: " + sugar.quantity + "sugar");
-                Console.WriteLine("Currently using " + lemonade.sugar + "Per cup");
+                Console.WriteLine("Press (1) to buy Paper Cups at 5 cents/cup");
+                Console.WriteLine("Current have: " + paperCups.quantity + " cups");
+                Console.WriteLine("Press (2) to buy Lemons at 25 cents/lemon");
+                Console.WriteLine("Current have: " + lemon.quantity + " lemons");
+                Console.WriteLine("Currently using " + lemonade.lemons +" lemons per cup");
+                Console.WriteLine("Press (3) to buy Ice at 1 cents/ice cube");
+                Console.WriteLine("Current have: " + ice.quantity + " ice");
+                Console.WriteLine("Currently using " + lemonade.ice + " ice cubes per cup");
+                Console.WriteLine("Press (4) to buy Sugar 5 cents/sugar unit");
+                Console.WriteLine("Current have: " + sugar.quantity + " sugar");
+                Console.WriteLine("Currently using " + lemonade.sugar + " sugar unit per cup");
                 Console.WriteLine("Press (5) to reset the recipe");
                 Console.WriteLine("Press (6) to start your business day!");
 
