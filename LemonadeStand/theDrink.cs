@@ -8,7 +8,7 @@ namespace LemonadeStand
 {
     class theDrink : items
     {
-        public theDrink(double PriceDrink, int Quantity, int Lemons, int Ice, int Sugar, int Cups)
+        public theDrink(double PriceDrink, int Quantity, int Lemons, int Ice, int Sugar, int Cups, int FlavorType)
         {
             priceDrink = PriceDrink;
             quantity = Quantity;
@@ -16,6 +16,7 @@ namespace LemonadeStand
             ice = Ice;
             sugar = Sugar;
             cups = Cups;
+            flavorType = FlavorType;
         }
 
     }

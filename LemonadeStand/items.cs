@@ -15,6 +15,7 @@ namespace LemonadeStand
         public int ice;
         public int sugar;
         public int cups;
+        public int flavorType;
         
     }
 }

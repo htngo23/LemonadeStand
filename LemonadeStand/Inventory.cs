@@ -15,11 +15,44 @@ namespace LemonadeStand
         Sugar sugar = new Sugar(.2, 0);
         Lemons lemon = new Lemons(.55, 0);
         PaperCup paperCups = new PaperCup(.10, 0);
-        public theDrink lemonade = new theDrink(0, 0, 0, 0, 0, 1);
+        public theDrink lemonade = new theDrink(0, 0, 0, 0, 0, 1, 0);
         Player gucci = new Player(200, "Gucci Mane");
 
+        public double dailyTotal;
+        public double dailyTotal2;
+        public double dailyTotal3;
+        public double dailyTotal4;
+        public double dailyTotal5;
+        public double dailyTotal6;
+        public double dailyTotal7;
 
+        public int setFlavor()
+        {
+            if ((lemonade.ice == 2) && (lemonade.lemons == 2) && (lemonade.sugar == 2))
+            {
+                lemonade.flavorType = 2;  //perfect.  Will go first because everyone will buy
+            }
+            else if ((lemonade.ice == 1) && (lemonade.lemons == 1) && (lemonade.sugar == 1))
+            {
+                lemonade.flavorType = 4;  //regular
+            }
 
+            else if ((lemonade.ice >= 3) && (lemonade.lemons > 0) && (lemonade.sugar > 0))
+            {
+                lemonade.flavorType = 1;  //too dilute
+            }
+           
+            else if((lemonade.ice > 0) && (lemonade.lemons > 0) && (lemonade.sugar >= 3))
+            {
+                lemonade.flavorType = 3; //too sweet
+            }
+            else if ((lemonade.ice > 0) && (lemonade.lemons > 0) && (lemonade.sugar > 0))
+            {
+                lemonade.flavorType = 5; //rando 
+            }
+
+            return lemonade.flavorType;
+        }
 
         public double setPrice()
         {
@@ -42,6 +75,8 @@ namespace LemonadeStand
                 Console.WriteLine("You have made a sale!");
                 gucci.money += lemonade.priceDrink;
                 subtractItems();
+                lemonade.quantity += 1;
+
             }
             else
             {
@@ -49,34 +84,58 @@ namespace LemonadeStand
             }
             return gucci.money;
         }
+        public void resetDailySales()
+        {
+            lemonade.quantity = 0;
+        }
 
-        public void printTotal1()
+        public double printTotal1()
         {
-            Console.WriteLine("The total of Day 1 are : $" + gucci.money);
+            dailyTotal = lemonade.quantity * lemonade.priceDrink;
+            Console.WriteLine("The total revenue of Day 1 is : $" + dailyTotal);
+            return dailyTotal;
         }
-        public void printTotal2()
+        public double printTotal2()
         {
-            Console.WriteLine("The total of Day 2 are : $" + gucci.money);
+            dailyTotal2 = lemonade.quantity * lemonade.priceDrink;
+            Console.WriteLine("The total revenue of Day 2 is : $" + dailyTotal2);
+            return dailyTotal2;
         }
-        public void printTotal3()
+        public double printTotal3()
         {
-            Console.WriteLine("The total of Day 3 are : $" + gucci.money);
+            dailyTotal3 = lemonade.quantity * lemonade.priceDrink;
+            Console.WriteLine("The total revenue of Day 3 is : $" + dailyTotal3);
+            return dailyTotal3;
         }
-        public void printTotal4()
+        public double printTotal4()
         {
-            Console.WriteLine("The total of Day 4 are : $" + gucci.money);
+            dailyTotal4 = lemonade.quantity * lemonade.priceDrink;
+            Console.WriteLine("The total revenue of Day 4 is : $" + dailyTotal4);
+            return dailyTotal4;
         }
-        public void printTotal5()
+        public double printTotal5()
         {
-            Console.WriteLine("The total of Day 5 are : $" + gucci.money);
+            dailyTotal5 = lemonade.quantity * lemonade.priceDrink;
+            Console.WriteLine("The total revenue of Day 5 is : $" + dailyTotal5);
+            return dailyTotal5;
         }
-        public void printTotal6()
+        public double printTotal6()
         {
-            Console.WriteLine("The total of Day 6 are : $" + gucci.money);
+            dailyTotal6 = lemonade.quantity * lemonade.priceDrink;
+            Console.WriteLine("The total revenue of Day 6 is : $" + dailyTotal6);
+            return dailyTotal6;
         }
-        public void printTotal7()
+        public double printTotal7()
         {
-            Console.WriteLine("The total of Day 7 are : $" + gucci.money);
+            dailyTotal7 = lemonade.quantity * lemonade.priceDrink;
+            Console.WriteLine("The total revenue of Day 7 is : $" + dailyTotal7);
+            return dailyTotal7;
+        }
+        public void printWeekly()
+        {
+            double weeklyTotal = (dailyTotal + dailyTotal2 + dailyTotal3 + dailyTotal4 + dailyTotal5 + dailyTotal6 + dailyTotal7);
+            Console.WriteLine("Weekly profits are : $" + weeklyTotal);
+            Console.WriteLine("Fin");
         }
 
         public int purchaseGoods()
@@ -91,11 +150,16 @@ namespace LemonadeStand
                 Console.WriteLine("Current have: " + paperCups.quantity + "cups");
                 Console.WriteLine("Press (2) to buy Lemons at 55 cents/lemon");
                 Console.WriteLine("Current have: " + lemon.quantity + "lemons");
+                Console.WriteLine("Currently using " + lemonade.lemons +"Per cup");
                 Console.WriteLine("Press (3) to buy Ice at 5 cents/ice cube");
                 Console.WriteLine("Current have: " + ice.quantity + "ice");
+                Console.WriteLine("Currently using " + lemonade.ice + "Per cup");
                 Console.WriteLine("Press (4) to buy Sugar 20 cents/sugar unit");
                 Console.WriteLine("Current have: " + sugar.quantity + "sugar");
-                Console.WriteLine("Press (5) to exit");
+                Console.WriteLine("Currently using " + lemonade.sugar + "Per cup");
+                Console.WriteLine("Press (5) to reset the recipe");
+                Console.WriteLine("Press (6) to start your business day!");
+
                 string inputs = Console.ReadLine();
                 switch (inputs)
                 {
@@ -105,7 +169,7 @@ namespace LemonadeStand
                     case "2":
                         buyLemon();
                         useLemon();
-                        break;
+                        break; 
                     case "3":
                         buyIce();
                         useIce();
@@ -115,6 +179,11 @@ namespace LemonadeStand
                         useSugar();
                         break;
                     case "5":
+                        lemonade.lemons = 0;
+                        lemonade.ice = 0;
+                        lemonade.sugar = 0;
+                        break;
+                    case "6":
                         exit = true;
                         break;
                     default:
