@@ -8,7 +8,7 @@ namespace LemonadeStand
 {
     class Inventory
     {
-
+        Random random = new Random();
       
 
         Ice ice = new Ice(.01, 0);
@@ -16,7 +16,7 @@ namespace LemonadeStand
         Lemons lemon = new Lemons(.25, 0);
         PaperCup paperCups = new PaperCup(.05, 0);
         public theDrink lemonade = new theDrink(0, 0, 0, 0, 0, 1, 0);
-        Player gucci = new Player(200, "Gucci Mane");
+        Player gucci = new Player(100, "Gucci Mane");
 
         public double dailyTotal;
         public double dailyTotal2;
@@ -26,6 +26,13 @@ namespace LemonadeStand
         public double dailyTotal6;
         public double dailyTotal7;
 
+        public void randomizePrice()
+        {
+            ice.ingredientCost = random.NextDouble() * (.04 - .01) + .01;
+            paperCups.ingredientCost = random.NextDouble() * (.07 - .03) + .03;
+            lemon.ingredientCost = random.NextDouble() * (.27 - .19) + .19;
+            sugar.ingredientCost = random.NextDouble() * (.09 - .03) + .03;
+        }
         public int setFlavor()
         {
             if ((lemonade.ice == 2) && (lemonade.lemons == 2) && (lemonade.sugar == 2))
@@ -156,15 +163,15 @@ namespace LemonadeStand
             {
                 Console.WriteLine("You have $" + gucci.money);
 
-                Console.WriteLine("Press (1) to buy Paper Cups at 5 cents/cup");
+                Console.WriteLine("Press (1) to buy Paper Cups at " + paperCups.ingredientCost + " cents/cup");
                 Console.WriteLine("Current have: " + paperCups.quantity + " cups");
-                Console.WriteLine("Press (2) to buy Lemons at 25 cents/lemon");
+                Console.WriteLine("Press (2) to buy Lemons at " + lemon.ingredientCost + " cents/lemon");
                 Console.WriteLine("Current have: " + lemon.quantity + " lemons");
                 Console.WriteLine("Currently using " + lemonade.lemons +" lemons per cup");
-                Console.WriteLine("Press (3) to buy Ice at 1 cents/ice cube");
+                Console.WriteLine("Press (3) to buy Ice at " + ice.ingredientCost + " cents/ice cube");
                 Console.WriteLine("Current have: " + ice.quantity + " ice");
                 Console.WriteLine("Currently using " + lemonade.ice + " ice cubes per cup");
-                Console.WriteLine("Press (4) to buy Sugar 5 cents/sugar unit");
+                Console.WriteLine("Press (4) to buy Sugar at " + sugar.ingredientCost + " cents/sugar unit");
                 Console.WriteLine("Current have: " + sugar.quantity + " sugar");
                 Console.WriteLine("Currently using " + lemonade.sugar + " sugar unit per cup");
                 Console.WriteLine("Press (5) to reset the recipe");

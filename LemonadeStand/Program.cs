@@ -15,16 +15,12 @@ namespace LemonadeStand
             Customer patron = new Customer(stock);
             Gameplay gameplay = new Gameplay();
 
-            //stock.setPrice();
-            //forecast.weatherNewDay();
-            //patron.passOrBuy(stock.lemonade, forecast.weather1);
-            //stock.purchaseGoods();
-            gameplay.test();
-
+            gameplay.core();
+            //stock.randomizePrice();
             
 
             Console.ReadLine();
-            //stock.buyLemon();
+         
             
 
         }
