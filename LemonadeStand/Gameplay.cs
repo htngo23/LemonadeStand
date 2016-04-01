@@ -20,11 +20,8 @@ namespace LemonadeStand
         public void printIntro()
         {
             Console.WriteLine("You have 50 patrons to cater to... Be mindful of your prices and quanity of items you put into lemonade");
+            Console.WriteLine("Cost of item inputs will vary on the daily");
             Console.WriteLine("Find the receipe to knock your customers off their feet!");
-           // Console.WriteLine("Papers cups = "+ PaperCup.ingredientcost + " cents/cup");
-           // Console.WriteLine("Lemons = 25 cents/lemon");
-           // Console.WriteLine("Ice = 1 cents/cube");
-           // Console.WriteLine("Sugar = 5 cents/unit");
         }
 
         public void core()
